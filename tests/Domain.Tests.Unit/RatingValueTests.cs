@@ -3,7 +3,7 @@ using BurgerBackend.Domain.Common.Rating;
 using FluentAssertions;
 using Xunit;
 
-namespace Domain.Tests.Unit;
+namespace BurgerBackend.Domain.Tests.Unit;
 
 public class RatingValueTests
 {
