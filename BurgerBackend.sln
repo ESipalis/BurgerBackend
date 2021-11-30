@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Tests.Unit", "tests\Infrastructure.Tests.Unit\Infrastructure.Tests.Unit.csproj", "{4F648A04-B2A1-4A7F-A588-0E47B2C52073}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "src\WebApi\WebApi.csproj", "{6F3B403C-7F1C-459B-ABD8-14E5CDFC19F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,7 @@ Global
 		{14F0AB92-1E81-4D52-9729-F3ABCE129175} = {B8BDAAF6-DCB4-4210-BE23-79E9C0AAEE73}
 		{5413FE8F-796A-4DA9-B08D-9A2431B07D11} = {B8BDAAF6-DCB4-4210-BE23-79E9C0AAEE73}
 		{4F648A04-B2A1-4A7F-A588-0E47B2C52073} = {173A9545-C2CF-4FAC-A2AE-306D72FEFCDC}
+		{6F3B403C-7F1C-459B-ABD8-14E5CDFC19F3} = {B8BDAAF6-DCB4-4210-BE23-79E9C0AAEE73}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{62B0BDD8-5297-4A28-890D-E3D74AD03720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -47,5 +50,9 @@ Global
 		{4F648A04-B2A1-4A7F-A588-0E47B2C52073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F648A04-B2A1-4A7F-A588-0E47B2C52073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F648A04-B2A1-4A7F-A588-0E47B2C52073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F3B403C-7F1C-459B-ABD8-14E5CDFC19F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F3B403C-7F1C-459B-ABD8-14E5CDFC19F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F3B403C-7F1C-459B-ABD8-14E5CDFC19F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F3B403C-7F1C-459B-ABD8-14E5CDFC19F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
