@@ -1,9 +1,9 @@
 ﻿using BurgerBackend.Application.Restaurant;
-using BurgerBackend.Domain.Common.Rating;
 using BurgerBackend.Domain.Review;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
+using WebApi.Models;
 
 namespace WebApi.Controllers;
 
@@ -24,31 +24,17 @@ public class RestaurantsController : ControllerBase
     [HttpPost("{restaurantId:long}/reviews")]
     public async Task<ActionResult<ReviewDto>> AddReview(long restaurantId, AddReviewDto addReviewDto, CancellationToken cancellationToken)
     {
-        var azureUserId = Convert.ToInt64(this.User.Claims.First(claim => claim.Type == "AzureUserId").Value);
-        string displayName = this.User.Claims.First(claim => claim.Type == "DisplayName").Value;
-        var reviewToAdd = addReviewDto.ToReviewToAdd(azureUserId, displayName);
+        ReviewToAdd reviewToAdd = GetReviewToAdd(addReviewDto);
         Review review = await _restaurantRepository.AddReviewAsync(restaurantId, reviewToAdd, cancellationToken);
-        return review.ToDto();
+        return review.ToDto(restaurantId);
     }
-}
 
-public record AddReviewDto();
-
-public static class AddReviewDtoExtensions
-{
-    public static ReviewToAdd ToReviewToAdd(this AddReviewDto addReviewDto, long azureUserId, string userDisplayName)
+    private ReviewToAdd GetReviewToAdd(AddReviewDto addReviewDto)
     {
-        var rating = new Rating(RatingValue.From(1), RatingValue.From(2), RatingValue.From(3));
-        return new ReviewToAdd(new ReviewToAddUser(azureUserId, userDisplayName), rating, "FakeComment", null);
-    }
-}
-
-public record ReviewDto();
-
-public static class ReviewDtoExtensions
-{
-    public static ReviewDto ToDto(this Review review)
-    {
-        return new ReviewDto();
+        const string displayNameClaim = "DisplayName";
+        const string azureUserIdClaim = "AzureUserId";
+        long azureUserId = long.Parse(User.Claims.First(claim => claim.Type == azureUserIdClaim).Value);
+        string displayName = User.Claims.First(claim => claim.Type == displayNameClaim).Value;
+        return addReviewDto.ToDomain(azureUserId, displayName);
     }
 }
